@@ -60,25 +60,59 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     expect(page.deleteHobbieButtonIsPresent()).toBeTruthy(); // esperamos que el botón este presente en la página
   });
 
-  // ******* EJERCICIOS PARA PRACTICAR ************
-  // 1. llenar todos los campos del formulario reactivo correctamente, presionar el botón guardar y verificar que se
-  // limpian todos los campos del formulario
-  // 2. Probar que el botón de borrar hobbie funciona
-  // 3. Crear el arreglo ['jorge', 'jorge@' , 'jorge@ho'] hacer una prueba que escriba cada uno de los
-  // string del arreglo en el campo correo y verificar que el mensaje de error aparezca en la pantalla
-  // (Se debe utilizar un for para no repetir el código por cada string en el arreglo)
-  // 4. Crear 2 archivos uno para la clase formulario template y otro para el describe de las pruebas de esa página
-  // (el archivo debe terminar con extención .e2e-spec.ts), recuerden hacer un método en la clase formulario template
-  // que se dirija a dicha página del proyecto con la instrucción browser.get(browser.baseUrl + 'template')
-  // realizar la prueba del ejercicio 3 para ese formulario
+
+  /////////////////////////////////////////////////////
+  
+  it('Al precionar el boton de guardar limpiara todos los campos', async ( ) => {
+    page.navigateToReactivePage();
+    page.setName('Miguel');
+    page.setLastName('Jimenez');
+    page.setEmail('correo@correo.com');
+    page.setUser('UserDemo12');
+    page.setPsw('asdfg123');
+    page.setRpsw('asdfg123');
+    page.setState('Edo Mex');
+    page.setcity('Toluca');
+
+    await page.clickSaveButton();
+
+    expect(page.getName()).toEqual('');
+    expect(page.getLastName()).toEqual('');
+    expect(page.getEmail()).toEqual('');
+    expect(page.getUser()).toEqual('');
+    expect(page.getPsw()).toEqual('');
+    expect(page.getRpsw()).toEqual('');
+    expect(page.getState()).toEqual('');
+    expect(page.getcity()).toEqual('');
+    
+  });
+
+
+  /////////////////////////////////////////////)
+
+
+  it('Debe de verificar que el boton de borrar hobbie funciona', async ( ) => {
+    page.navigateToReactivePage();
+    page.clickAddButton();
+    await (page.clickDeleteButton());
+    expect (page.deleteHobbieButtonIsPresent()).toBe(false);
+  });
+
+
+  ////////////////////////////////////////////////////////////
+
+  it('Verificar que marque error el correo con una arreglo', async () => {
+    const email = ['jorge', 'jorge@' , 'jorge@ho'];
+    email.forEach(element => {
+      page.setEmail(element);
+      expect(page.getTextOfEspecificError(0)).toEqual('Correo obligatorio ;)');
+    });
+    
+  });
+
   // 5. Probar la selección de un checkbox, para ello, seleccionar Cuba del checkbox Pais,
   // sugerencia utilice la instruccion cssContainingText
-  // 6. Finalmente pruebe retrasos de tiempo jugando con el tiempo en la instrucción protractor.promise.delayed(tiempo);
-
-  // EJERCICIO SUGERIDO
-  // Consulte las pruebas del tutorial en la página de protractor https://www.protractortest.org/#/tutorial
-  // (si puede realice las pruebas del tutorial en un archivo de este proyecto ignorando las partes del archivo de configuración
-  // porque este proyecto ya cuenta con las configuraciones necesarias)
+  
 
   afterEach(async () => { // Este método se ejecuta despues de cada prueba
     // Revisa si no hay errores severos emitidos por el navegador
