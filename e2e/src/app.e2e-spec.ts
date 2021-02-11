@@ -63,10 +63,61 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
   // ******* EJERCICIOS PARA PRACTICAR ************
   // 1. llenar todos los campos del formulario reactivo correctamente, presionar el botón guardar y verificar que se
   // limpian todos los campos del formulario
+  
+  
+  it('Al precionar el boton de guardar limpiara todos los campos', async ( ) => {
+    page.navigateToReactivePage();
+    page.setName('Miguel');
+    page.setLastName('Jimenez');
+    page.setEmail('correo@correo.com');
+    page.setUser('UserDemo12');
+    page.setPsw('asdfg123');
+    page.setRpsw('asdfg123');
+    page.setState('Edo Mex');
+    page.setcity('Toluca');
+
+    await page.clickSaveButton();
+
+    expect(page.getName()).toEqual('');
+    expect(page.getLastName()).toEqual('');
+    expect(page.getEmail()).toEqual('');
+    expect(page.getUser()).toEqual('');
+    expect(page.getPsw()).toEqual('');
+    expect(page.getRpsw()).toEqual('');
+    expect(page.getState()).toEqual('');
+    expect(page.getcity()).toEqual('');
+    
+  });
+
+
   // 2. Probar que el botón de borrar hobbie funciona
+
+
+  it('Debe de verificar que el boton de borrar hobbie funciona', async ( ) => {
+    page.navigateToReactivePage();
+    page.clickAddButton();
+    await (page.clickDeleteButton());
+    expect (page.deleteHobbieButtonIsPresent()).toBe(false);
+  });
+
+
   // 3. Crear el arreglo ['jorge', 'jorge@' , 'jorge@ho'] hacer una prueba que escriba cada uno de los
   // string del arreglo en el campo correo y verificar que el mensaje de error aparezca en la pantalla
   // (Se debe utilizar un for para no repetir el código por cada string en el arreglo)
+
+
+  it('Verificar que marque error el correo', async () => {
+    const email = ['jorge', 'jorge@' , 'jorge@ho'];
+    email.forEach(element => {
+      page.setEmail(element);
+      expect(page.getTextOfEspecificError(0)).toEqual('Correo obligatorio ;)');
+    });
+    
+  });
+
+
+
+
   // 4. Crear 2 archivos uno para la clase formulario template y otro para el describe de las pruebas de esa página
   // (el archivo debe terminar con extención .e2e-spec.ts), recuerden hacer un método en la clase formulario template
   // que se dirija a dicha página del proyecto con la instrucción browser.get(browser.baseUrl + 'template')

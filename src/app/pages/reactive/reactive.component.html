@@ -5,7 +5,8 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col">
-                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre"
+                    [class.is-invalid]="nombreNoValido">
                 <small *ngIf="nombreNoValido" class="text-danger">
                     Ingresa al menos 5 letras :)
                 </small>
@@ -14,7 +15,8 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col">
-                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [class.is-invalid]="apellidoNoValido">
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido"
+                    [class.is-invalid]="apellidoNoValido">
                 <small *ngIf="apellidoNoValido" class="text-danger">
                     Apellido obligatorio :O
                 </small>
@@ -24,7 +26,8 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">Correo</label>
         <div class="col">
-            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [class.is-invalid]="correoNoValido">
+            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo"
+                [class.is-invalid]="correoNoValido">
             <small *ngIf="correoNoValido" class="text-danger">
                 Correo obligatorio ;)
             </small>
@@ -33,7 +36,8 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">Usuario</label>
         <div class="col">
-            <input class="form-control" type="email" placeholder="Usuario" formControlName="usuario" [class.is-invalid]="usuarioNoValido">
+            <input class="form-control" type="email" placeholder="Usuario" formControlName="usuario"
+                [class.is-invalid]="usuarioNoValido">
             <small *ngIf="usuarioNoValido" class="text-danger">
                 Usuario ya existe :O
             </small>
@@ -42,7 +46,8 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">Contraseña</label>
         <div class="col">
-            <input class="form-control" type="password" placeholder="Contraseña" formControlName="pass1" [class.is-invalid]="pass1NoValido">
+            <input class="form-control" type="password" placeholder="Contraseña" formControlName="pass1"
+                [class.is-invalid]="pass1NoValido">
             <!-- <small *ngIf="correoNoValido" class="text-danger">
                 Correo obligatorio ;)
             </small> -->
@@ -51,7 +56,8 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">Repita contraseña</label>
         <div class="col">
-            <input class="form-control" type="password" placeholder="Repetir contraseña" formControlName="pass2" [class.is-invalid]="pass2NoValido">
+            <input class="form-control" type="password" placeholder="Repetir contraseña" formControlName="pass2"
+                [class.is-invalid]="pass2NoValido">
             <!-- <small *ngIf="correoNoValido" class="text-danger">
                 Correo obligatorio ;)
             </small> -->
@@ -61,10 +67,12 @@
         <label class="col-2 col-form-label">Dirección</label>
         <div class="form-row col">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Estado" formControlName="estado" [class.is-invalid]="estadoNoValido">
+                <input type="text" class="form-control" placeholder="Estado" formControlName="estado"
+                    [class.is-invalid]="estadoNoValido">
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Ciudad" formControlName="municipio" [class.is-invalid]="municipioNoValido">
+                <input type="text" class="form-control" placeholder="Ciudad" formControlName="municipio"
+                    [class.is-invalid]="municipioNoValido">
             </div>
         </div>
     </div>
@@ -101,8 +109,8 @@
         <label class="col-2 col-form-label ">&nbsp;</label>
         <div class="input-group col ">
             <button type="submit " class="btn btn-outline-primary btn-block ">
-        Guardar
-      </button>
+                Guardar
+            </button>
         </div>
     </div>
 </form>
